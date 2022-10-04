@@ -62,4 +62,10 @@ export class SumsubApi implements ICredentialType {
 		return requestOptions as IHttpRequestOptions;
 	}
 
+	test: ICredentialTestRequest = {
+		request: {
+			url: 'https://api.sumsub.com/resources/status/api',
+			method: 'GET',
+		},
+	};
 }
