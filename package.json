@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-sumsub",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This package offers \"Sumsub\" credentials type only (no nodes yet).",
   "keywords": [
     "n8n-community-node-package",
@@ -22,9 +22,8 @@
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "tslint -p tsconfig.json -c tslint.json && eslint credentials package.json",
-    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js credentials package.json"
+    "lint": "tslint -p tsconfig.json -c tslint.json && eslint credentials nodes package.json",
+    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint credentials nodes package.json --fix"
   },
   "files": [
     "dist"
@@ -34,7 +33,9 @@
     "credentials": [
       "dist/credentials/SumsubApi.credentials.js"
     ],
-    "nodes": []
+    "nodes": [
+      "dist/nodes/Sumsub/Sumsub.node.js"
+    ]
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
