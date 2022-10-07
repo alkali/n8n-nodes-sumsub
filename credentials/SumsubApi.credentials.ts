@@ -41,7 +41,12 @@ export class SumsubApi implements ICredentialType {
 		const appToken = credentials.app_token as string;
 		const appSecret = credentials.secret as string;
 		const method = requestOptions?.method as string;
-		const body = requestOptions?.body as string;
+		let body = requestOptions?.body;
+		if (body === undefined || Object.keys(body).length === 0){
+			body = '';
+		} else if (body) {
+			body = body.toString();
+		}
 		// @ts-ignore
 		if (requestOptions["uri"] && !requestOptions.url) {
 			// @ts-ignore
@@ -59,6 +64,7 @@ export class SumsubApi implements ICredentialType {
 			'X-App-Access-Sig': sign,
 			'X-App-Access-Ts': timestamp,
 		};
+		requestOptions.headers['Accept'] = 'application/json';
 		return requestOptions as IHttpRequestOptions;
 	}
 
