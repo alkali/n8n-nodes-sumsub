@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-sumsub",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This package offers \"Sumsub\" credentials type only (no nodes yet).",
   "keywords": [
     "n8n-community-node-package",
