@@ -41,12 +41,21 @@ export class SumsubApi implements ICredentialType {
 		const appToken = credentials.app_token as string;
 		const appSecret = credentials.secret as string;
 		const method = requestOptions?.method as string;
+		const contentType = requestOptions?.headers
+			? requestOptions?.headers['Content-Type']
+			: undefined;
+
 		let body = requestOptions?.body;
-		if (body === undefined || Object.keys(body).length === 0){
+		if (body === undefined || Object.keys(body).length === 0) {
 			body = '';
 		} else if (body) {
-			body = body.toString();
+			if (!contentType) {
+				body = JSON.stringify(body);
+			} else {
+				body = decodeURIComponent(body);
+			}
 		}
+
 		// @ts-ignore
 		if (requestOptions["uri"] && !requestOptions.url) {
 			// @ts-ignore
