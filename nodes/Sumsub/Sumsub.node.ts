@@ -1,10 +1,10 @@
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import {INodeType, INodeTypeDescription, NodeConnectionType} from 'n8n-workflow';
 
 export class Sumsub implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Sumsub',
 		name: 'Sumsub',
-		icon: 'file:sumsub.svg',
+		icon: {light: 'file:sumsub.svg', dark: 'file:sumsub.svg'},
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -12,8 +12,8 @@ export class Sumsub implements INodeType {
 		defaults: {
 			name: 'Sumsub',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{
 				name: 'sumsubApi',
@@ -81,7 +81,7 @@ export class Sumsub implements INodeType {
 				required: true,
 				name: 'level',
 				type: 'string',
-				default:'',
+				default: '',
 				displayOptions: {
 					show: {
 						resource: [
@@ -103,7 +103,7 @@ export class Sumsub implements INodeType {
 				required: true,
 				name: 'body',
 				type: 'json',
-				default:'',
+				default: '',
 				displayOptions: {
 					show: {
 						resource: [
@@ -113,7 +113,6 @@ export class Sumsub implements INodeType {
 				},
 				routing: {
 					request: {
-						// You've already set up the URL. qs appends the value of the field as a query string
 						body: '={{ $value }}',
 					},
 				},
